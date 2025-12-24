@@ -17,3 +17,17 @@ docker container ls -l
 docker container ls 
 docker container run -itd --name=webapp ubuntu // create continaer with name 
 docker container rename webapp custom-webapp // rename container
+docker container run -d httpd // run in detach mode.
+docker container attach contianerID // will attach to the shell the continaer.
+
+to detach from the container press CTRL+p+q and it will start run in the bg.
+docker container exec containerid hostname // print hostname of the container
+docker container exec -it contaierid /bin/bash // give us bash shell to conainter
+
+inspecting container:
+docker container inspect webapp
+docker container stats // show us containers resources usage like CPU,MEMORY USAGE,I/O.
+docker container top webapp // shows us the proccess top in the continaer
+docker container logs containerName // shows us logs
+docker container logs -f continaername // shows us live logs
+docker system events --since 60m // shows us system events of docker all events.
