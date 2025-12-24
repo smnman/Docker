@@ -1,0 +1,10 @@
+Docker commands: 
+
+dockerd - show logs of daemon 
+dockerd --debug - also show logs
+installtion on:
+
+/var/run/docker.sock -> Unix socker 
+dockerd --host=IPOFTHEHOST:2375
+from other server you can view logs with
+export DOCKER_HOST="tcp://TARGETIPOFDOCKER:2375"
