@@ -1,10 +1,19 @@
 Docker commands: 
 
-dockerd - show logs of daemon 
-dockerd --debug - also show logs
+dockerd // how logs of daemon 
+dockerd --debug // also show logs
 installtion on:
 
-/var/run/docker.sock -> Unix socker 
+/var/run/docker.sock // Unix socker 
 dockerd --host=IPOFTHEHOST:2375
 from other server you can view logs with
-export DOCKER_HOST="tcp://TARGETIPOFDOCKER:2375"
+export DOCKER_HOST="tcp://TARGETIPOFDOCKER:2375" // 2376 is for encrypted 
+
+docker default config file:
+/etc/docker/daemon.json
+
+new docker format commads:
+docker container ls -l
+docker container ls 
+docker container run -itd --name=webapp ubuntu // create continaer with name 
+docker container rename webapp custom-webapp // rename container
