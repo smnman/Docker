@@ -31,3 +31,13 @@ docker container top webapp // shows us the proccess top in the continaer
 docker container logs containerName // shows us logs
 docker container logs -f continaername // shows us live logs
 docker system events --since 60m // shows us system events of docker all events.
+
+setting hostname to a container:
+docker container run -it --name=webapp --hostname=webapp ubuntu
+
+docker container run --restart=always ubuntu
+restart policies:
+1.always
+2.no
+3.on-failure
+4.unless-stopped
