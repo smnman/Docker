@@ -56,3 +56,19 @@ docker run -p 5000 kodekolude/webapp
 docker run -P kodekoloud/webapp
 docker run -P --expose=8080 kodekoloud/webapp
 
+for debug porpses you should set the debug option to true:
+docker system info
+vi /etc/docker/daemon.json
+{
+  "debug":true
+}
+systemctl restart docker
+run container
+to see logs: cat var/log/messeges
+
+logging drivers:
+cd /var/lib/docker/containers; ls
+cat containerID.json
+to change logs path go to daemon.json file
+"log-driver": "awslogs" // for AWS
+docker run -d --log-driver json-file nginx
