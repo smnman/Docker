@@ -41,3 +41,18 @@ restart policies:
 2.no
 3.on-failure
 4.unless-stopped
+
+/etc/docker/daemon.json
+live restore:true // this option make the apps inside the container still running if docker daemon is down.
+
+copy files from host to container
+docker container cp /tmp/web.conf webapp:/etc/web.conf
+
+ports:
+docker run -p 8000:5000 kodekloud/webapp
+docker run -p 192.168.1.4:8000:5000 kodekloude/webapp
+docker run -p 127.0.0.1:8000:5000 kodekolud/webapp
+docker run -p 5000 kodekolude/webapp
+docker run -P kodekoloud/webapp
+docker run -P --expose=8080 kodekoloud/webapp
+
