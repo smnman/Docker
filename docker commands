@@ -111,3 +111,21 @@ docker network connect custom-net my-container // to connect container to custom
 docket network disconnect custom-net my-container // to discoonect
 docker network rm custom-net
 docker network prune 
+
+
+docker storage:
+docker volume ls
+docker volume create testvol
+docker container run -itd --name=test -v testvol:/simon centos:7
+docker container run -itd --name=test --mount source=testvol,destination=/simon centos:7 
+docker container run -itd --name=test --mount source=testvol,destination=/simon,readonly centos:7 
+
+mkdir /data
+docker container run -itd --name=test --mount type=bind,source=/data,desitination=/simon centos:7 
+
+docker volume inspect data_volume 
+docker volume remove data_volume
+docker volume prune 
+
+ReadOnly Volume:
+docker container run --mount source=data_vol1,destination=/var/www/html/index.html,readonly httpd
