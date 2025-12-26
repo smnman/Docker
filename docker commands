@@ -72,3 +72,42 @@ cat containerID.json
 to change logs path go to daemon.json file
 "log-driver": "awslogs" // for AWS
 docker run -d --log-driver json-file nginx
+
+docker images:
+docker system df // shows us  
+SIZE of Images,Containers,Local Volumes...
+docker image tag httpd:alpine httpd:simonv1 // will tag the httpd:alpine to my tag.
+docker image save alpine:latest -o alpine.tar // save image to tar
+docker image load -i alpine.tar // uploading the image to docker 
+
+basic Dockerfile
+FROM Ubuntu // os-ubuntu
+RUN apt-get update && apt-get -y install python // update apt-repo && install python
+RUN pip install flask flask-mysql // instal python dependecies using pip
+COPY . /opt/source-code / copy source code to opt folder
+ENTRYPOINT FLASK_APP=/opt/source-code/app.py flask run // run web server with flask fcommand 
+
+create a image:
+docker build . -f Dockerfile -t simon/my-custom-app
+docker pish simon/my-custom-app
+docker history imageName // shows the build of the image.
+.dockerignore // ignores in build files inside the build directory.
+### the most unused commands like yum/dnf install packages should be alawys on top and 
+### the most used commands like editing my app code should be in bottom
+### diffrence between COPY AND ADD
+ADD can use tar and link to files.
+FROM centos:7 
+ADD app.tar.xz /testdir || ADD http://app.tar.xz /testdir // but its better to use COPY
+
+network:
+docker run ubuntu // bridge network
+docker run ubntu --network=none //  no network assigned
+docker run ubuntu --network=host // assiged to ip of the network in port 5000
+docker network create --driver bridge --subnet 182.18.0.0/16  custom-isolated-network // create network
+by defualt docker create 1 isolated netowkr for all containers.
+docker network ls // to see netowrks
+docker network insepct containerID // 
+docker network connect custom-net my-container // to connect container to custom network
+docket network disconnect custom-net my-container // to discoonect
+docker network rm custom-net
+docker network prune 
