@@ -89,7 +89,7 @@ ENTRYPOINT FLASK_APP=/opt/source-code/app.py flask run // run web server with fl
 
 create a image:
 docker build . -f Dockerfile -t simon/my-custom-app
-docker pish simon/my-custom-app
+docker push simon/my-custom-app
 docker history imageName // shows the build of the image.
 .dockerignore // ignores in build files inside the build directory.
 ### the most unused commands like yum/dnf install packages should be alawys on top and 
@@ -129,3 +129,5 @@ docker volume prune
 
 ReadOnly Volume:
 docker container run --mount source=data_vol1,destination=/var/www/html/index.html,readonly httpd
+
+docker compose:
